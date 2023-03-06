@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin DashBoard{% endblock %}
+
+{% block body %}
+     <h1>Usuarios del sistema</h1>
+      {% if listUsers and listUsers|length >0%}
+        <table class="table">
+           <thead>
+             <tr class="table-active">
+              <th>ID</th>
+              <th>NOMBRE</th>
+              <th>APELLIDO</th>
+              <th>EMAIL</th>
+              <th>TIPO</th>
+            </tr>
+           </thead>
+           <tbody>
+             {% for user in listUsers %} 
+                <tr scope = "row">
+                  <td >{{user.id}}</td>
+                  <td>{{user.nombres}}</td>
+                  <td>{{user.apellidos}}</td>
+                  <td>{{user.email}}</td>
+                  <td colspan="2" class="table-active" >{{user.tipo}}</td>
+                </tr>
+             {% endfor %}   
+           </tbody>
+        </table>
+       {% else %}
+         <p style="color:red"><strong>No existen usuarios registrados</strong></p>
+       {% endif %}  
+       <a href="{{path('app_registration_user')}}">Añadir</a>
+       <a href="{{path('app_logout')}}">Cerrar Sesion</a>
+{% endblock %}

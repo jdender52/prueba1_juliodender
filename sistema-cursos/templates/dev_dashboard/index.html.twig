@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dev Dashboard{% endblock %}
+
+{% block body %}
+ <h1>Puesto de trabajo de Desarrollador-Lista de Cursos</h1>
+      {% if listCurso and listCurso|length >0%}
+        <table>
+           <thead>
+             <tr>
+              <th>ID</th>
+              <th>TITULO</th>
+              <th>DESCRIPCION</th>
+              <th>ESTADO</th>
+              <th>OPCIONES</th>
+            </tr>
+           </thead>
+           <tbody>
+             {% for curso in listCurso %} 
+                <tr scope = "row">
+                  <td>{{curso.id}}</td>
+                  <td>{{curso.titulo}}</td>
+                  <td>{{curso.descripcion}}</td>
+                  <td>{{curso.estado}}</td>
+                  <td>
+                       <a href="{{path('app_dev_dashboard_edit',{'id': curso.id})}}">Editar</a>
+                       <a href="{{path('app_dev_dashboard_delete',{'id': curso.id})}}">Eliminar</a>
+                  </td>
+                </tr>
+             {% endfor %}   
+           </tbody>
+        </table>
+       {% else %}
+         <p style="color:red"><strong>No existen cursos registrados</strong></p>
+       {% endif %}  
+       <a href="{{path('app_dev_dashboard_register')}}">Añadir curso</a>
+       <a href="{{path('app_logout')}}">Cerrar Sesion</a>
+{% endblock %}

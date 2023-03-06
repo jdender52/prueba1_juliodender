@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tester Dashboard{% endblock %}
+
+{% block body %}
+ <h1>Dashboard Admin</h1>
+      {% if listCurso and listCurso|length >0%}
+        <table>
+           <thead>
+             <tr>
+              <th>ID</th>
+              <th>TITULO</th>
+              <th>DESCRIPCION</th>
+              <th>OPCIONES</th>
+            </tr>
+           </thead>
+           <tbody>
+             {% for curso in listCurso %} 
+                <tr scope = "row">
+                  <td>{{curso.id}}</td>
+                  <td>{{curso.titulo}}</td>
+                  <td>{{curso.descripcion}}</td>
+                  <td>
+                       <a href="{{path('app_tester_dashboard_test',{'id': curso.id})}}">Test</a>
+                  </td>
+                </tr>
+             {% endfor %}   
+           </tbody>
+        </table>
+       {% else %}
+         <p style="color:red"><strong>No existen cursos activos por el momento</strong></p>
+       {% endif %}  
+       <a href="{{path('app_logout')}}">Cerrar Sesion</a>
+{% endblock %}

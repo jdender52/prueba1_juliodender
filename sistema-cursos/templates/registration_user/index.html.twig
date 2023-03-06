@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register User{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+      <h1>Registro de usuario</h1>
+      {{form(formulario)}}
+      <div>
+         <a href="javascript:history.back()">Cancelar</a>
+      </div>
+</div>
+{% endblock %}

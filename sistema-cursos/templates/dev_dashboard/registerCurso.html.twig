@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dev Register Dashboard{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Registrar Curso</h1>
+
+    {{ form_start(formulario)}}
+       {{ form_widget(formulario)}}
+    {{ form_end(formulario)}}
+    <a href="{{path('app_dev_dashboard')}}">Cancelar</a>
+</div>
+{% endblock %}
